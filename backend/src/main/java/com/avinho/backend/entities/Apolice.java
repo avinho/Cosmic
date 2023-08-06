@@ -20,7 +20,10 @@ public class Apolice implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Enumerated(EnumType.STRING)
     private Ramo ramo;
+
     private Date vig_inicial;
     private Date vig_final;
 

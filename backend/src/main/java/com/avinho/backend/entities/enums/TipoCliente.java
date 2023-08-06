@@ -4,11 +4,12 @@ import lombok.Getter;
 
 @Getter
 public enum TipoCliente {
-    PJ("Pessoal Juridica"),
-    PF("Pessoa Física");
+    FISICA("Pessoa Física"),
+    JURIDICA("Pessoa Juridica");
 
-    private final String type;
-    TipoCliente(String type) {
-        this.type = type;
+    private final String description;
+
+    TipoCliente(String description) {
+        this.description = description;
     }
 }

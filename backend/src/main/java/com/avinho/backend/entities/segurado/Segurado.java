@@ -20,7 +20,10 @@ public abstract class Segurado {
     private String address;
     private String contact;
     private String email;
+
+    @Enumerated(EnumType.STRING)
     private TipoCliente tipoCliente;
+
     @ManyToOne
     private Apolice apolices;
 

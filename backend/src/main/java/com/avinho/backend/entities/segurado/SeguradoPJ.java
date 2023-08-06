@@ -16,12 +16,12 @@ public class SeguradoPJ extends Segurado implements Serializable {
 
     public SeguradoPJ() {
         super();
-        setTipoCliente(TipoCliente.PJ);
+        setTipoCliente(TipoCliente.JURIDICA);
     }
 
     public SeguradoPJ(String name, String address, String contact, String email, String cnpj) {
         super(name, address, contact, email);
         this.cnpj = cnpj;
-        setTipoCliente(TipoCliente.PJ);
+        setTipoCliente(TipoCliente.JURIDICA);
     }
 }

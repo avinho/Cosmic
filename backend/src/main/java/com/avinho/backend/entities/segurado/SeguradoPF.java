@@ -21,13 +21,13 @@ public class SeguradoPF extends Segurado implements Serializable {
 
     public SeguradoPF() {
         super();
-        setTipoCliente(TipoCliente.PF);
+        setTipoCliente(TipoCliente.FISICA);
     }
 
     public SeguradoPF(String name, String address, String contact, String email, String cpf, Date birthday) {
         super(name, address, contact, email);
         this.cpf = cpf;
         this.birthday = birthday;
-        setTipoCliente(TipoCliente.PF);
+        setTipoCliente(TipoCliente.FISICA);
     }
 }
