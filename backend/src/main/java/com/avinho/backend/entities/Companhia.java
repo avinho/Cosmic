@@ -8,7 +8,9 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -22,6 +24,9 @@ public class Companhia implements Serializable{
     private String name;
     private String description;
 
+    @OneToMany(mappedBy = "companhia", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Apolice> apolices = new ArrayList<>();
+
     @CreationTimestamp
     @Column(name= "created_at", nullable= false, updatable= false)
     private Date createdAt;
@@ -29,4 +34,9 @@ public class Companhia implements Serializable{
     @UpdateTimestamp
     @Column(name= "updated_at")
     private Date updatedAt;
+
+    public Companhia(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
 }
