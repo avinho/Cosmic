@@ -4,12 +4,15 @@ import com.avinho.backend.entities.enums.EstadoCivil;
 import com.avinho.backend.entities.enums.Sexo;
 import com.avinho.backend.entities.enums.TipoCliente;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,14 +26,19 @@ public class Segurado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull @NotEmpty
     private String name;
     private String address;
     private String contact;
+    @Email
     private String email;
     private Sexo sexo;
+    @NotNull @NotEmpty @Size(max=14)
     private String cpfCnpj;
     private EstadoCivil estadoCivil;
+    private LocalDate dataNascimento;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     private TipoCliente tipoCliente;
 
@@ -45,10 +53,11 @@ public class Segurado {
     @Column(name= "updated_at")
     private Date updatedAt;
 
-    public Segurado(String name, String address, String contact, String email, Sexo sexo, String cpfCnpj, EstadoCivil estadoCivil, TipoCliente tipoCliente) {
+    public Segurado(String name, LocalDate dataNascimento, String address, String contact, String email, Sexo sexo, String cpfCnpj, EstadoCivil estadoCivil, TipoCliente tipoCliente) {
         this.name = name;
         this.address = address;
         this.contact = contact;
+        this.dataNascimento = dataNascimento;
         this.email = email;
         this.sexo = sexo;
         this.cpfCnpj = cpfCnpj;

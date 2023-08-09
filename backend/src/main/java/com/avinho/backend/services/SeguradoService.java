@@ -3,6 +3,7 @@ package com.avinho.backend.services;
 import com.avinho.backend.entities.Apolice;
 import com.avinho.backend.entities.Segurado;
 import com.avinho.backend.repositories.SeguradoRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,11 @@ public class SeguradoService {
         List<Segurado> result = repository.findAll();
 
         return result.stream().map(segurado -> atualizarSegurado(segurado)).toList();
+    }
+
+    @Transactional
+    public void addSegurado(Segurado segurado) {
+        repository.save(segurado);
     }
 
     private Segurado atualizarSegurado(Segurado segurado) {
