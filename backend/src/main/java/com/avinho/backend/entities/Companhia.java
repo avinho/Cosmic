@@ -24,6 +24,7 @@ public class Companhia implements Serializable{
     private String name;
     private String description;
 
+
     @OneToMany(mappedBy = "companhia", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Apolice> apolices = new ArrayList<>();
 

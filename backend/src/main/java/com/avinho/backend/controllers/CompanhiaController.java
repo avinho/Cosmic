@@ -1,7 +1,7 @@
 package com.avinho.backend.controllers;
 
-import com.avinho.backend.entities.Segurado;
-import com.avinho.backend.services.SeguradoService;
+import com.avinho.backend.entities.Companhia;
+import com.avinho.backend.repositories.CompanhiaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/segurados")
+@RequestMapping("/companhia")
 @RequiredArgsConstructor
-public class SeguradoController {
+public class CompanhiaController {
 
-    private final SeguradoService seguardoService;
+    private final CompanhiaRepository repository;
 
     @GetMapping
-    public ResponseEntity<List<Segurado>> findAll() {
-        List<Segurado> seguados = seguardoService.getAllSegurados();
-        return ResponseEntity.ok(seguados);
+    public ResponseEntity<List<Companhia>> findAll() {
+        List<Companhia> result = repository.findAll();
+        return ResponseEntity.ok(result);
     }
 }

@@ -45,10 +45,14 @@ public class Segurado {
     @Column(name= "updated_at")
     private Date updatedAt;
 
-    public Segurado(String name, String address, String contact, String email) {
+    public Segurado(String name, String address, String contact, String email, Sexo sexo, String cpfCnpj, EstadoCivil estadoCivil, TipoCliente tipoCliente) {
         this.name = name;
         this.address = address;
         this.contact = contact;
         this.email = email;
+        this.sexo = sexo;
+        this.cpfCnpj = cpfCnpj;
+        this.estadoCivil = estadoCivil;
+        this.tipoCliente = tipoCliente;
     }
 }

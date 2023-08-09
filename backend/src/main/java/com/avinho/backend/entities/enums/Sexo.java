@@ -5,7 +5,7 @@ import lombok.Getter;
 @Getter
 public enum Sexo {
     MASCULINO("Masculino"),
-    FEMININO("FEMININO");
+    FEMININO("Feminino");
 
     private final String description;
 

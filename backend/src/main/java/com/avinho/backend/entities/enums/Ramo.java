@@ -4,11 +4,11 @@ import lombok.Getter;
 
 @Getter
 public enum Ramo {
-    AUTO("Automotive"),
-    RESIDENTIAL("residential"),
-    BUSINESS("Business"),
-    IND_LIFE("Individual Life"),
-    GP_LIFE("Group Life"),;
+    AUTO("Automovel"),
+    RESIDENCIAL("Residencial"),
+    EMPRESARIAL("Empresarial"),
+    VIDA_INDIVIDUAL("Vida Individual"),
+    VIDA_GRUPO("Vida em Grupo");
 
     private final String description;
 
