@@ -4,8 +4,8 @@ import lombok.Getter;
 
 @Getter
 public enum EstadoCivil {
-    SOLTEIRO("Solteiro(a)"),
-    CASADO("Casado(a)"),
+    SOLTEIRO("Solteiro"),
+    CASADO("Casado"),
     DIVORCIADO("Divorciado(a)"),
     UNIAO_ESTAVEL("União Estavel"),
     VIUVO("Viuvo(a)");

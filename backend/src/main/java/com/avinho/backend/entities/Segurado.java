@@ -4,7 +4,10 @@ import com.avinho.backend.entities.enums.EstadoCivil;
 import com.avinho.backend.entities.enums.Sexo;
 import com.avinho.backend.entities.enums.TipoCliente;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +15,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -32,10 +34,14 @@ public class Segurado {
     private String contact;
     @Email
     private String email;
+    @Enumerated(EnumType.STRING)
     private Sexo sexo;
     @NotNull @NotEmpty @Size(max=14)
     private String cpfCnpj;
+
+    @Enumerated(EnumType.STRING)
     private EstadoCivil estadoCivil;
+
     private LocalDate dataNascimento;
 
     @NotNull

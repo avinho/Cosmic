@@ -12,10 +12,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
-import java.util.TimeZone;
 
 @Configuration
 @RequiredArgsConstructor
@@ -26,15 +25,17 @@ public class Instantiation implements CommandLineRunner {
     private final CompanhiaRepository companhiaRepository;
     @Override
     public void run(String... args) throws Exception {
-        SimpleDateFormat dateFmt = new SimpleDateFormat("dd/MM/yyyy");
-        dateFmt.setTimeZone(TimeZone.getTimeZone("GMT-3"));
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         apoliceRepository.deleteAll();
         seguradoRepository.deleteAll();
         companhiaRepository.deleteAll();
 
-        Segurado joao = new Segurado("Joao Pinto Rego", LocalDate.parse("1997-11-11"), "rua 2, bairro america, aracaju-se", "79996424652", "email@email.com", Sexo.MASCULINO, "123456789-12", EstadoCivil.SOLTEIRO, TipoCliente.FISICA);
-        Segurado pedro = new Segurado("Pedro Pinto Rego", LocalDate.parse("2000-02-11"), "rua 2, bairro america, aracaju-se", "79996424652", "email@email.com", Sexo.MASCULINO, "123456789-12", EstadoCivil.SOLTEIRO, TipoCliente.FISICA);
+        LocalDate date2 = LocalDate.of(2000, 2,11);
+        date2.format(fmt);
+
+        Segurado joao = new Segurado("Joao Pinto Rego", date2, "rua 2, bairro america, aracaju-se", "79996424652", "email@email.com", Sexo.MASCULINO, "123456789-12", EstadoCivil.SOLTEIRO, TipoCliente.FISICA);
+        Segurado pedro = new Segurado("Pedro Pinto Rego", date2, "rua 2, bairro america, aracaju-se", "79996424652", "email@email.com", Sexo.MASCULINO, "123456789-12", EstadoCivil.CASADO, TipoCliente.FISICA);
         seguradoRepository.saveAll(Arrays.asList(joao, pedro));
 
         Companhia porto = new Companhia("Porto", "Porto Seguro");
