@@ -1,3 +1,7 @@
+api:
+  security:
+    token:
+      secret: ${JWT_SECRET:secret}
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5433/galaxy

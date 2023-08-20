@@ -1,4 +1,4 @@
-package com.avinho.backend.entities.enums;
+package com.avinho.backend.entities.user;
 
 import lombok.Getter;
 
