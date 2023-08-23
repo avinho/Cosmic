@@ -1,7 +1,7 @@
 package com.avinho.backend.config;
 
-import com.avinho.backend.services.AuthorizationService;
 import com.avinho.backend.services.TokenService;
+import com.avinho.backend.services.UserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,7 +19,7 @@ import java.io.IOException;
 public class FilterToken extends OncePerRequestFilter {
 
     private final TokenService tokenService;
-    private final AuthorizationService authorizationService;
+    private final UserService userService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -29,7 +29,7 @@ public class FilterToken extends OncePerRequestFilter {
         if(authHeader != null) {
             token = authHeader.replace("Bearer ", "");
             var subject = this.tokenService.getSubject(token);
-            var user = this.authorizationService.loadUserByUsername(subject);
+            var user = this.userService.loadUserByUsername(subject);
             var auth = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
 
             SecurityContextHolder.getContext().setAuthentication(auth);

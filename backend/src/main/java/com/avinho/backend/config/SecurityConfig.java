@@ -14,7 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-/*TODO*/
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -29,7 +29,7 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authConfig -> authConfig
                                 .requestMatchers(HttpMethod.POST, "/auth/**").permitAll()
-                                .requestMatchers(HttpMethod.POST, "/segurados").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.POST, "/segurados").hasRole("USER")
                                 .requestMatchers(HttpMethod.GET, "/segurados").hasRole("USER")
                                 .anyRequest().authenticated()
                         )
