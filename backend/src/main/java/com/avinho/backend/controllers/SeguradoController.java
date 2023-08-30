@@ -2,6 +2,7 @@ package com.avinho.backend.controllers;
 
 import com.avinho.backend.entities.Segurado;
 import com.avinho.backend.services.SeguradoService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/segurados")
 @RequiredArgsConstructor
+@Tag(name = "Segurado", description = "Endpoint for segurados")
 public class SeguradoController {
 
     private final SeguradoService seguradoService;

@@ -5,6 +5,7 @@ import com.avinho.backend.entities.user.RegisterUserDTO;
 import com.avinho.backend.entities.user.User;
 import com.avinho.backend.repositories.UserRepository;
 import com.avinho.backend.services.TokenService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,8 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("auth")
+@RequestMapping("/auth")
 @RequiredArgsConstructor
+@Tag(name = "Auth", description = "Endpoint for authentication")
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;

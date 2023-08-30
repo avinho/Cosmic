@@ -25,7 +25,7 @@ public class Instantiation implements CommandLineRunner {
     private final CompanhiaRepository companhiaRepository;
     @Override
     public void run(String... args) throws Exception {
-        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        /*DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         apoliceRepository.deleteAll();
         seguradoRepository.deleteAll();
@@ -40,6 +40,9 @@ public class Instantiation implements CommandLineRunner {
 
         Companhia porto = new Companhia("Porto", "Porto Seguro");
         Companhia mapfre = new Companhia("Mapfre", "Mapfre Seguros");
+
+        porto.getRamos().addAll(Arrays.asList(Ramo.AUTO, Ramo.RESIDENCIAL, Ramo.EMPRESARIAL, Ramo.VIDA_INDIVIDUAL, Ramo.VIDA_GRUPO));
+        mapfre.getRamos().addAll(Arrays.asList(Ramo.AUTO, Ramo.RESIDENCIAL, Ramo.EMPRESARIAL));
         companhiaRepository.saveAll(Arrays.asList(porto, mapfre));
 
         Apolice apolice = new Apolice(joao, porto, Ramo.AUTO, StatusApolice.VIGENTE, BigDecimal.valueOf(123), 15.0, LocalDate.parse("2000-01-01"), LocalDate.parse("2001-01-01"));
@@ -53,6 +56,6 @@ public class Instantiation implements CommandLineRunner {
         mapfre.getApolices().add(apolice2);
 
         seguradoRepository.saveAll(Arrays.asList(joao, pedro));
-        companhiaRepository.saveAll(Arrays.asList(porto, mapfre));
+        companhiaRepository.saveAll(Arrays.asList(porto, mapfre));*/
     }
 }

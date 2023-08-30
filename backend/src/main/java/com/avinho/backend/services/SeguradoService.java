@@ -19,7 +19,7 @@ public class SeguradoService {
     public List<Segurado> getAll() {
         List<Segurado> result = repository.findAll();
 
-        return result.stream().map(segurado -> atualizarSegurado(segurado)).toList();
+        return result.stream().map(this::atualizarSegurado).toList();
     }
 
     @Transactional
@@ -34,11 +34,11 @@ public class SeguradoService {
         return segurado;
     }
 
-    public Segurado update (Long id, Segurado segurado) {
+    public void update (Long id, Segurado segurado) {
         try {
             Segurado entity = repository.getReferenceById(id);
             updateData(entity, segurado);
-            return repository.save(entity);
+            repository.save(entity);
         } catch (EntityNotFoundException e) {
             throw new ResourceNotFoundException("Segurado not found with id: " + id);
         }
@@ -63,7 +63,9 @@ public class SeguradoService {
     }
 
     private Segurado atualizarSegurado(Segurado segurado) {
-        List<Apolice> apolices = segurado.getApolices().stream().map(apolice -> atualizarApolice(apolice)).toList();
+        List<Apolice> apolices = segurado.getApolices().stream()
+                .map(this::atualizarApolice)
+                .toList();
         segurado.setApolices(apolices);
         return segurado;
     }
