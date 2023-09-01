@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
+/*
+TODO: Adicionar endpoint para buscar por nome e adicionar paginação ao findAll
+ */
 @RestController
 @RequestMapping("/companhias")
 @RequiredArgsConstructor
@@ -21,9 +24,13 @@ public class CompanhiaController {
     private final CompanhiaService service;
 
     @PostMapping
-    public ResponseEntity<Void> create(@RequestBody @Valid CompanhiaRequestDTO data) {
-        service.addCompanhia(data);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    public ResponseEntity<String> create(@RequestBody @Valid CompanhiaRequestDTO data) {
+        try {
+            service.addCompanhia(data);
+            return ResponseEntity.status(HttpStatus.CREATED).build();
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     @GetMapping
