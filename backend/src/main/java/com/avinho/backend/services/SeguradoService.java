@@ -63,10 +63,7 @@ public class SeguradoService {
     }
 
     private Segurado atualizarSegurado(Segurado segurado) {
-        List<Apolice> apolices = segurado.getApolices().stream()
-                .map(this::atualizarApolice)
-                .toList();
-        segurado.setApolices(apolices);
+        segurado.getApolices().stream().map(this::atualizarApolice).toList();
         return segurado;
     }
 

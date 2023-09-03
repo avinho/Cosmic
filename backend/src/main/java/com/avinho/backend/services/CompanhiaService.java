@@ -1,7 +1,9 @@
 package com.avinho.backend.services;
 
+import com.avinho.backend.entities.Apolice;
 import com.avinho.backend.entities.Companhia;
 import com.avinho.backend.entities.CompanhiaRequestDTO;
+import com.avinho.backend.entities.Segurado;
 import com.avinho.backend.exceptions.ResourceAreadyExistsException;
 import com.avinho.backend.exceptions.ResourceNotFoundException;
 import com.avinho.backend.repositories.CompanhiaRepository;
@@ -19,6 +21,11 @@ public class CompanhiaService {
     private final CompanhiaRepository companhiaRepository;
 
     @Transactional
+    public void save(Companhia companhia) {
+        companhiaRepository.save(companhia);
+    }
+
+    @Transactional
     public void addCompanhia(CompanhiaRequestDTO data) {
         Companhia companhia = new Companhia(data.name(), data.description());
         if (companhiaRepository.findByName(companhia.getName()) != null) {
@@ -28,11 +35,15 @@ public class CompanhiaService {
     }
 
     public List<Companhia> getAll() {
-        return companhiaRepository.findAll();
+        List<Companhia> result = companhiaRepository.findAll();
+        result.stream().map(this::atualizarCompanhia).toList();
+        return result;
     }
 
     public Companhia findById(Long id) {
-        return companhiaRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Companhia not found with id " + id));
+        Companhia companhia = companhiaRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Companhia not found with id " + id));
+        atualizarCompanhia(companhia);
+        return companhia;
     }
 
     @Transactional
@@ -49,6 +60,19 @@ public class CompanhiaService {
 
     @Transactional
     public void delete(Long id) {
-        companhiaRepository.deleteById(id);
+        var result = findById(id);
+        companhiaRepository.deleteById(result.getId());
+    }
+
+    private Companhia atualizarCompanhia(Companhia companhia) {
+        companhia.getApolices().stream().map(this::atualizarApolice).toList();
+        return companhia;
+    }
+
+    private Apolice atualizarApolice(Apolice apolice) {
+        if(apolice.getCompanhia() != null) {
+            apolice.setNomeCompanhia(apolice.getCompanhia().getName());
+        }
+        return apolice;
     }
 }

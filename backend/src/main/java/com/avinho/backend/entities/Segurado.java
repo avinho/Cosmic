@@ -10,19 +10,19 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(exclude = "apolices")
 public class Segurado {
 
     @Id
@@ -49,7 +49,7 @@ public class Segurado {
     private TipoCliente tipoCliente;
 
     @OneToMany(mappedBy = "segurado", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Apolice> apolices = new ArrayList<>();
+    private Set<Apolice> apolices = new HashSet<>();
 
     @CreationTimestamp
     @Column(name= "created_at", nullable= false, updatable= false)

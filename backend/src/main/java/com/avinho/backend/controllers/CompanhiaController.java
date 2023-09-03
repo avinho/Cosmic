@@ -3,6 +3,8 @@ package com.avinho.backend.controllers;
 import com.avinho.backend.entities.Companhia;
 import com.avinho.backend.entities.CompanhiaRequestDTO;
 import com.avinho.backend.services.CompanhiaService;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.v3.core.util.Json;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +26,7 @@ public class CompanhiaController {
     private final CompanhiaService service;
 
     @PostMapping
-    public ResponseEntity<String> create(@RequestBody @Valid CompanhiaRequestDTO data) {
+    public ResponseEntity<Object> create(@RequestBody @Valid CompanhiaRequestDTO data) {
         try {
             service.addCompanhia(data);
             return ResponseEntity.status(HttpStatus.CREATED).build();
@@ -52,8 +54,12 @@ public class CompanhiaController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> deleteById(@PathVariable("id") Long id) {
-        service.delete(id);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<Object> deleteById(@PathVariable("id") Long id) {
+        try {
+            service.delete(id);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 }

@@ -27,6 +27,7 @@ public class Apolice implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Integer number;
     @NotNull
     private LocalDate initialDate;
     @NotNull
@@ -65,7 +66,8 @@ public class Apolice implements Serializable {
     @NotNull
     private Companhia companhia;
 
-    public Apolice(Segurado segurado, Companhia companhia, Ramo ramo, StatusApolice status, BigDecimal premio, Double comissao, LocalDate initialDate, LocalDate finalDate) {
+    public Apolice(Integer number, Segurado segurado, Companhia companhia, Ramo ramo, StatusApolice status, BigDecimal premio, Double comissao, LocalDate initialDate, LocalDate finalDate) {
+        this.number = number;
         this.initialDate = initialDate;
         this.finalDate = finalDate;
         this.premio = premio;
