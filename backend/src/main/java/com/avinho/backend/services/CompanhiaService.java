@@ -3,8 +3,7 @@ package com.avinho.backend.services;
 import com.avinho.backend.entities.Apolice;
 import com.avinho.backend.entities.Companhia;
 import com.avinho.backend.entities.CompanhiaRequestDTO;
-import com.avinho.backend.entities.Segurado;
-import com.avinho.backend.exceptions.ResourceAreadyExistsException;
+import com.avinho.backend.exceptions.ResourceAlreadyExistsException;
 import com.avinho.backend.exceptions.ResourceNotFoundException;
 import com.avinho.backend.repositories.CompanhiaRepository;
 import jakarta.transaction.Transactional;
@@ -29,7 +28,7 @@ public class CompanhiaService {
     public void addCompanhia(CompanhiaRequestDTO data) {
         Companhia companhia = new Companhia(data.name(), data.description());
         if (companhiaRepository.findByName(companhia.getName()) != null) {
-            throw new ResourceAreadyExistsException("Companhia " + data.name() + " already exists");
+            throw new ResourceAlreadyExistsException("Companhia " + data.name() + " already exists");
         }
         companhiaRepository.save(companhia);
     }

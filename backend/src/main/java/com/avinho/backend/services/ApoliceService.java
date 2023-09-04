@@ -2,7 +2,6 @@ package com.avinho.backend.services;
 
 import com.avinho.backend.entities.Apolice;
 import com.avinho.backend.entities.ApoliceRequestDTO;
-import com.avinho.backend.exceptions.ResourceAreadyExistsException;
 import com.avinho.backend.repositories.ApoliceRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
