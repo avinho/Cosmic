@@ -1,0 +1,31 @@
+mat-sidenav-container {
+  height: 100vh;
+}
+mat-sidenav {
+  width: 200px;
+  height: 100vh;
+  margin-top: 64px;
+  padding: 16px;
+  background-color: rgb(129, 130, 131);
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.content-container {
+  margin-top: 64px;
+  padding: 16px;
+  overflow-y: auto;
+  height: calc(100% - 64px);
+}
+
+.icon {
+  font-size: 23px;
+}
