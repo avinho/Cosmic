@@ -1,0 +1,63 @@
+<div class="row-1">
+  <mat-card>
+    <mat-card-header class="card-hearder-1">
+      <mat-card-title>
+        <mat-icon class="icon">apartment</mat-icon>
+        Seguradoras
+      </mat-card-title>
+      <mat-card-actions>
+        <mat-form-field class="form-field">
+          <input matInput placeholder="" (keyup)="applyFilter($event)" #input>
+        </mat-form-field>
+        <button mat-raised-button color="primary">Adicionar</button>
+      </mat-card-actions>
+    </mat-card-header>
+    <mat-card-content>
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="nome">
+          <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
+          <mat-cell *matCellDef="let seguradora">
+            {{seguradora.nome}}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="gerente">
+          <mat-header-cell *matHeaderCellDef>Gerente</mat-header-cell>
+          <mat-cell *matCellDef="let seguradora">
+            {{seguradora.gerente}}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="telefone">
+          <mat-header-cell *matHeaderCellDef>Telefone</mat-header-cell>
+          <mat-cell *matCellDef="let seguradora">
+            {{seguradora.telefone}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+          <mat-cell *matCellDef="let seguradora">
+            {{seguradora.email}}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let element" class="actions-cell">
+              <button mat-icon-button color="primary" (click)="editarElemento(element)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="excluirElemento(element)">
+                <mat-icon>delete</mat-icon>
+              </button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let movie; columns: displayedColumns"></mat-row>
+      </table>
+
+      <mat-paginator [pageSize]="10" [length]="resultsLength"></mat-paginator>
+    </mat-card-content>
+  </mat-card>
+</div>

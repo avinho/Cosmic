@@ -13,6 +13,7 @@
         <mat-icon class="icon">settings</mat-icon>
         Configurações
       </button>
+      <mat-divider></mat-divider>
       <button mat-menu-item>
         <mat-icon class="icon">logout</mat-icon>
         Sair
@@ -21,15 +22,22 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
+<div class="space"></div>
+
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav mode="side" [(opened)]="opened">
+  <mat-sidenav mode="side" [(opened)]="opened" class="sidenav">
     <!-- Conteúdo do sidenav aqui -->
-    Sidenav
+    <mat-divider></mat-divider>
+    <mat-nav-list class="nav-list">
+      <a *ngFor="let item of items_menu" mat-list-item routerLink="{{item.link}}" routerLinkActive="active" class="list-item">
+        <mat-icon>{{item.icon}}</mat-icon>
+        <span>{{item.label}}</span>
+      </a>
+    </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <div class="content-container">
       <!-- Conteúdo principal aqui -->
-      Conteudo
       <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>

@@ -1,0 +1,35 @@
+.row-1 {
+  margin: 20px;
+}
+
+.card-hearder-1 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.actions-cell {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.actions-container span {
+  padding-left: 15px;
+}
+
+.form-field {
+  display: inline-flex;
+  height: 58px;
+  justify-content: center;
+}
+
+
+mat-header-row {
+  border-bottom: 1px solid currentColor;
+  font-size: 16px;
+}
+
+mat-card-title {
+  mat-icon {
+    vertical-align: middle;
+  }
+}
