@@ -12,16 +12,14 @@
   justify-content: flex-end;
 }
 
+.form-field {
+  padding-top: 10px;
+  scale: 0.85;
+}
+
 .actions-container span {
   padding-left: 15px;
 }
-
-.form-field {
-  display: inline-flex;
-  height: 58px;
-  justify-content: center;
-}
-
 
 mat-header-row {
   border-bottom: 1px solid currentColor;

@@ -5,10 +5,13 @@
         <mat-icon class="icon">apartment</mat-icon>
         Seguradoras
       </mat-card-title>
-      <mat-card-actions>
-        <mat-form-field class="form-field">
-          <input matInput placeholder="" (keyup)="applyFilter($event)" #input>
+      <mat-card-subtitle>
+        <mat-form-field class="form-field" appearance="fill">
+          <mat-label>Pesquisa</mat-label>
+          <input matInput placeholder="" class="mat-small" (keyup)="applyFilter($event)" #input>
         </mat-form-field>
+      </mat-card-subtitle>
+      <mat-card-actions>
         <button mat-raised-button color="primary">Adicionar</button>
       </mat-card-actions>
     </mat-card-header>
