@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+
 
 import { SeguradosRoutingModule } from './segurados-routing.module';
 import { SeguradosComponent } from './segurados.component';
@@ -12,8 +12,7 @@ import { SeguradosComponent } from './segurados.component';
   ],
   imports: [
     CommonModule,
-    SeguradosRoutingModule,
-    HttpClientModule
+    SeguradosRoutingModule
   ]
 })
 export class SeguradosModule { }
